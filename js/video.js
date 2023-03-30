@@ -49,11 +49,11 @@ speed_up.addEventListener("click", function() {
 
 // Skip Ahead : Advance the current video by 10 seconds.  If the video length has been exceeded go back to the start of the video - no farther.   Log the current location of the video.
 skip.addEventListener("click", function() {
-	console.log(video.currentTime);
 	video.currentTime += 10;
 	if (video.ended) {
 		video.currentTime = 0;
 	}
+	console.log(video.currentTime);
 });
 
 // Mute: Mute/unmute the video and update the text in the button.
@@ -61,9 +61,11 @@ mute.addEventListener("click", function() {
 	console.log("mute button clicked");
 	if (video.muted) {
 		video.muted = false;
+		mute.textContent = "Mute"
 	}
 	else {
 		video.muted = true;
+		mute.textContent = "Unmute"
 	}
 });
 
