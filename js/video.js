@@ -8,6 +8,9 @@ let mute = document.getElementById("mute");
 let slow_down = document.getElementById("slower");
 let speed_up = document.getElementById("faster");
 let skip = document.getElementById("skip");
+let volume_slider = document.getElementById("slider");
+let old_school = document.getElementById("vintage");
+let new_school = document.getElementById("orig");
 
 //Page load: Initialize the video element and turn off autoplay and turn off looping.
 window.addEventListener("load", function() {
@@ -21,11 +24,8 @@ play.addEventListener("click", function() {
 	console.log('play button clicked');
 	video.play();
 
-	// if (mute.clicked()) {
-	// 	video.mute();
-	// }
-	//todo: update volume other than mute
-	//question- is this correct?
+	video.volume = (volume_slider.value / 100);
+	document.getElementById("volume").textContent = video.volume*100 + "%";
 	
 });
 
@@ -69,3 +69,20 @@ mute.addEventListener("click", function() {
 
 // Volume Slider : Change the volume based on the slider and update the volume information.
 
+volume_slider.addEventListener("click", function() {
+	console.log("volume slider moving");
+	video.volume = (volume_slider.value / 100);
+	document.getElementById("volume").textContent = video.volume*100 + "%";
+});
+
+//Styled : Utilize the existing oldSchool class on the video element
+old_school.addEventListener("click", function() {
+	console.log("old school selected");
+	video.style = video.classList.add("oldSchool");
+});
+
+//Original: Remove the oldSchool class from the video.
+new_school.addEventListener("click", function() {
+	console.log("new school selected");
+	video.style = video.classList.remove("oldSchool");
+});
